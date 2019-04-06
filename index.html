@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Chat with strangers at random in private chat rooms</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta name="description" content="Chat with strangers at random in private chat rooms" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:700,500,400,900" rel="stylesheet" type="text/css" />
+	<style>
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed,
+		figure, figcaption, footer, header, hgroup,
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure,
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		body {
+			background: #2c3e50;
+			color: #fff;
+			font-family: 'Roboto', helvetica, sans-serif;
+		}
+		.wrapper {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		#main {
+			width: 300px;
+			height: 300px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			-moz-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			background: #fff;
+			text-align: center;
+			border-radius: 30px;
+			padding: 40px;
+		}
+		.button {
+			background: #3498db;
+			color: #fff;
+			text-decoration: none;
+			height: 45px;
+			width: 100%;
+			display: block;
+			line-height: 45px;
+		}
+	</style>
+</head>
+
+<body class="is-loading">
+	<div id="wrapper">
+		<div id="main">
+			<div class="inner">
+				<ul class="buttons" id="buttons02">
+					<li><a href="/chat" class="button n01">Połącz z nieznajomym</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		var on = addEventListener,
+			$ = function(q) {
+				return document.querySelector(q)
+			},
+			$$ = function(q) {
+				return document.querySelectorAll(q)
+			},
+			$body = document.body,
+			$inner = $('.inner');
+		on('load', function() {
+			setTimeout(function() {
+				$body.className = $body.className.replace(/\bis-loading\b/, 'is-playing');
+				setTimeout(function() {
+					$body.className = $body.className.replace(/\bis-playing\b/, 'is-ready');
+				}, 1750);
+			}, 100);
+		});
+		var style, sheet, rule;
+		style = document.createElement('style');
+		style.appendChild(document.createTextNode(''));
+		document.head.appendChild(style);
+		sheet = style.sheet;
+		if (navigator.userAgent.match(/Android ([0-9\.]+)/)) {
+			(function() {
+				sheet.insertRule('body::after { }', 0);
+				rule = sheet.cssRules[0];
+				var f = function() {
+					rule.style.cssText = 'height: ' + (Math.max(screen.width, screen.height)) + 'px';
+				};
+				on('load', f);
+				on('orientationchange', f);
+				on('touchmove', f);
+			})();
+		} else if (navigator.userAgent.match(/([0-9_]+) like Mac OS X/) || navigator.userAgent.match(/CPU like Mac OS X/)) {
+			(function() {
+				sheet.insertRule('body::after { }', 0);
+				rule = sheet.cssRules[0];
+				rule.style.cssText = '-webkit-transform: scale(1.0)';
+			})();
+		} else if (navigator.userAgent.match(/(MSIE|rv:11\.0)/)) {
+			(function() {
+				var t, f;
+				f = function() {
+					var x = $('#wrapper');
+					if (x.scrollHeight > innerHeight) x.style.height = 'auto';
+					else x.style.height = '100vh';
+				};
+				(f)();
+				on('resize', function() {
+					clearTimeout(t);
+					t = setTimeout(f, 250);
+				});
+			})();
+		}
+	</script>
+</body>
+
+</html>

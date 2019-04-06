@@ -1,0 +1,15 @@
+{
+  "name": "anonymous",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "6.5.0"
+  },
+  "dependencies": {
+    "express": "~4.13.4",
+    "socket.io": "^1.5.1"
+  }
+}
